@@ -1,0 +1,281 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'Head.html' %}
+
+<body>
+{% load static %}
+<!-- banner -->
+<div class="banner jarallax" id="home">
+    <img class="jarallax-img" src="{% static 'images/22.jpg' %}" alt="">
+    <header>
+        <div class="container">
+            <div class="header-bottom-agileits">
+                <div class="w3-logo">
+                    <h1><a href="/">SPA</a></h1>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </header>
+    <!-- navigation -->
+    <div class="nav-bg">
+        <div class="container">
+            <nav class="navbar navbar-default shift">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a class="active" href="/">Home</a></li>
+                        <li><a href={% url 'About' %}>About</a></li>
+                        <li><a href={% url 'portfolio' %}>Portfolio</a></li>
+                        <li><a href="{% url 'contactus' %}">Contact</a></li>
+                        <li><a href="/admin">Sign in</a></li>
+                        <li><a href="{% url 'singup' %}">Sign Up</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+    </div>
+    <!-- //navigation -->
+    <div class="container">
+        <!-- header -->
+        <!-- //header -->
+        <div class="agileits_w3layouts_banner_info">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        {% for x in carousel %}
+                            <li>
+                                <div class="banner-text-w3-agileits">
+                                    <h5>{{ x.Heading1 }}</h5>
+                                    <h2>{{ x.Heading2 }}</h2>
+                                    <p>{{ x.Paragraph }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+
+
+<div class="wthree-mid jarallax">
+    <img class="jarallax-img" src="{% static 'images/33.jpg' %}" alt="">
+    <div class="container">
+        {% for x in about %}
+            <h3>{{ x.About_Heading }}</h3>
+            <p>{{ x.About }}</p>
+        {% endfor %}
+
+        <div class="botton">
+            <a href="{% url 'About' %}">About Us</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="w3ls-section wthree-pricing" id="pricing">
+    <div class="container">
+        <div class="wthree_head_section">
+
+            <h3 class="w3l_header">Packages <span>Pricing</span></h3>
+            <p>Our packages were made for you to taste the alluring relax feeling that is from a whole new universe
+                            
+
+            </p>
+        </div>
+        <div class="pricing-grids-info">
+            {% for x in package %}
+                <div class="pricing-grid grid-one" style="margin-right: 2%">
+                    <div class="w3ls-top">
+                        <h3>{{ x.Name }}</h3>
+                    </div>
+                    <div class="w3ls-bottom">
+                        <ul class="count">
+                            <li>{{ x.Offer1 }}</li>
+                            <li>{{ x.Offer2 }}</li>
+                            <li>{{ x.Offer3 }}</li>
+                            <li>{{ x.Offer4 }}</li>
+                            <li>{{ x.Offer5 }}</li>
+                        </ul>
+                        <h4>{{ x.Price }}<span class="sup">$</span></h4>
+                        <div class="more">
+                            <a href="{% url 'reserve' %}">Reserve</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+            <!--End-slider-script-->
+        </div>
+    </div>
+</div>
+<!--//pricing-->
+<!-- counter -->
+<div class="services-bottom jarallax">
+    <img class="jarallax-img" src="{% static 'images/11.jpg' %}" alt="">
+    <div class="banner-dott1">
+        <div class="container">
+            <div class="wthree_head_section">
+                <h3 class="w3l_header two">Our <span>Statistics</span></h3>
+                <p class="tho"> </p>
+            </div>
+            <div class="wthree-agile-counter">
+                {% for x in statistics %}
+                    <div class="col-md-4 w3_agile_stats_grid-top">
+                        <div class="w3_agile_stats_grid">
+                            <div class="agile_count_grid_left">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </div>
+                            <div class="agile_count_grid_right">
+                                <p class="counter">{{ x.Number }}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                            <h4>{{ x.Name }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //counter -->
+<!-- Clients -->
+<div class="clients-main" id="clients">
+    <div class="container">
+        <!-- Owl-Carousel -->
+        <div class="wthree_head_section">
+            <h3 class="w3l_header">What <span>People Say</span></h3>
+            <p>We always love to hear from our customers and publish their opinion so we can get better, and for other future customers to get excited about taking the experience with us
+            </p>
+        </div>
+        <div id="owl-demo" class="owl-carousel text-center clients-right">
+            {% for x in review %}
+                <div class="item g1">
+                    <div class="agile-dish-caption">
+                        <h4>{{ x.Name }}</h4>
+                        <span>{{ x.Service }}</span>
+                    </div>
+                    <img class="lazyOwl" src="{{ MEDIA_URL }}{{ x.Image }}" alt=""/>
+                    <div class="clearfix"></div>
+                    <p class="para-w3-agile"><span class="fa fa-quote-left" aria-hidden="true"></span>{{ x.Review }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <!--// Owl-Carousel -->
+    </div>
+</div>
+<!--// Clients -->
+{% for x in contactUs %}
+    {% include 'Footer.html' with x=x %}
+{% endfor %}
+
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover"
+                                                                         style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script type='text/javascript' src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<!-- start-smoth-scrolling -->
+
+
+<script src="{% static 'js/jarallax.js' %}"></script>
+
+<script type="text/javascript">
+    /* init Jarallax */
+    $('.jarallax').jarallax({
+        speed: 0.5,
+        imgWidth: 1366,
+        imgHeight: 768
+    })
+</script>
+<!-- flexSlider -->
+<script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>
+<!-- //flexSlider -->
+
+<!-- Owl-Carousel-JavaScript -->
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $("#owl-demo").owlCarousel({
+            items: 2,
+            lazyLoad: true,
+            autoPlay: false,
+            pagination: true,
+        });
+    });
+</script>
+<!-- //Owl-Carousel-JavaScript -->
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!-- //here ends scrolling icon -->
+
+<!-- stats -->
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.countup.js' %}"></script>
+<script>
+    $('.counter').countUp();
+</script>
+<!-- //stats -->
+
+<!--js for bootstrap working-->
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<!-- //for bootstrap working -->
+</body>
+
+</html>

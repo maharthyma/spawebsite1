@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'Head.html' %}
+<body>
+{% include 'Navbar.html' %}
+<!-- wthree-mid -->
+<div class="wthree-mid jarallax">
+    <img class="jarallax-img" src="{% static 'images/33.jpg' %}" alt="">
+    <div class="container">
+        {% for x in about_other %}
+            <h3>{{ x.About_Heading }}</h3>
+            <p>{{ x.About }}</p>
+            <div class="botton">
+                <a href="{% url 'About' %}">About Us</a>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+<!-- //wthree-mid -->
+
+<!-- about-top -->
+<div class="agileits-about-top">
+    <div class="container">
+        <div class="wthree_head_section">
+            <h3 class="w3l_header">Portfolio <span>Overview </span></h3>
+            <p>We can state that we are legally identified by the government with the licenses and we are giving you a short brief about our services at the best spa in town so you make sure to reserve a place for you darling
+                </p>
+        </div>
+        <div class="agileinfo-top-grids">
+            {% for x in Portfolio %}
+                <div class="col-sm-4 wthree-top-grid">
+                    <img src="{{ MEDIA_URL }}{{ x.Picture }}" class="img-responsive" alt=""/>
+                    <h4>{{ x.Name }}</h4>
+                    <p>{{ x.About }}</p>
+                </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //about-top -->
+
+
+{% for x in contactUs %}
+    {% include 'Footer.html' with x=x %}
+{% endfor %}
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover"
+                                                                         style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script type='text/javascript' src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<!-- start-smoth-scrolling -->
+<script src="{% static 'js/jarallax.js' %}"></script>
+<script type="text/javascript">
+    /* init Jarallax */
+    $('.jarallax').jarallax({
+        speed: 0.5,
+        imgWidth: 1366,
+        imgHeight: 768
+    })
+</script>
+<!-- //Owl-Carousel-JavaScript -->
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!-- //here ends scrolling icon -->
+
+
+<!--js for bootstrap working-->
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

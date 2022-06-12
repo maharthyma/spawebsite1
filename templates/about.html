@@ -1,0 +1,107 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% include 'Head.html' %}
+<body>
+{% include 'Navbar.html' %}
+<!-- about -->
+<div class="about">
+    <div class="container">
+        <div class="wthree_head_section">
+            <h3 class="w3l_header">About <span>Us</span></h3>
+            <p>We are the best spa in town who is really looking forward to see you soon and get you freshened up and spoiled by our team with lovelies packages
+            </p>
+        </div>
+        {% for x in about %}
+            <div class="ab-agile">
+                <div class="col-md-6 aboutleft">
+                    <h3>Welcome to SPA</h3>
+                    <p class="para1">{{ x.AboutText }}</p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i> {{ x.AboutPoint1 }}</p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i>{{ x.AboutPoint2 }}</p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i>{{ x.AboutPoint3 }}</p>
+                </div>
+                <div class="col-md-6 aboutright">
+                    <img src="{{ MEDIA_URL }}{{ x.Picture }}" class="img-responsive" alt=""/>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- //about -->
+<!-- wthree-mid -->
+<div class="wthree-mid jarallax">
+    <img class="jarallax-img" src="{% static 'images/33.jpg' %}" alt="">
+    <div class="container">
+        {% for x in about_other %}
+            <h3>{{ x.About_Heading }}</h3>
+            <p>{{ x.About }}</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- //wthree-mid -->
+
+<!-- Team section -->
+<section class="team">
+    <div class="container">
+        <div class="wthree_head_section">
+            <h3 class="w3l_header">Our <span>Team</span></h3>
+            <p> We are here to serve and spoil the most beautiful ladies in town and give them the best experience in life that is full of comfort and joy
+            </p>
+        </div>
+        <div class="team-grid-top">
+            {% for x in team %}
+                <div class="col-md-3 team1">
+                    <div class="inner-team1">
+                        <img src="{{ MEDIA_URL }}{{ x.Picture }}" alt=""/>
+                        <h3>{{ x.Name }}</h3>
+                        <h4>{{ x.Position }}</h4>
+                        <p>{{ x.About }}</p>
+                        <div class="team-social">
+                            <a href="{{ x.Twitter }}"><i class="fa fa-twitter"></i></a>
+                            <a href="{{ x.Facebook }}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ x.Instagram }}"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+</section>
+<!-- //Team section -->
+
+<!-- Modal1 -->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Beauty Salon</h4>
+                <img src="{% static 'images/11.jpg' %}" alt=" " class="img-responsive">
+                <h5>Neque porro quisquam est qui dolorem </h5>
+                <p>Ut in ligula sollicitudin, auctor elit vel, mollis tortor. Nullam id magna in eros mollis porttitor
+                    vel et eros.Phasellus
+                    sed iaculis nibh, non suscipit tortor. Aenean ante massa, lobortis et dolor eget, sollicitudin
+                    luctus arcu. Donec eros
+                    tortor, ultrices in lectus quis, aliquet commodo lectus.Donec eros tortor, ultrices in lectus quis,
+                    aliquet commodo
+                    lectus.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //Modal1 -->
+<!-- footer -->
+{% for x in contactUs %}
+    {% include 'Footer.html' with x=x %}
+{% endfor %}<!-- //footer -->
+{% include 'FooterScript.html' %}
+</body>
+</html>
